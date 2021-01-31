@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,8 +13,6 @@ public class SpawnUIScreenUnit : Unit
     public ControlOutput output { get; private set; }
     [DoNotSerialize]
     public ValueInput valueIn { get; private set; }
-    [DoNotSerialize]
-    public ValueOutput valueOut { get; private set; }
 
     private Object spawnedPrefab;
     private IUIComponent[] components;
@@ -26,9 +24,6 @@ public class SpawnUIScreenUnit : Unit
         inputStop = ControlInput("destroy", Destroy);
 
         valueIn = ValueInput<Object>("prefab");
-        valueOut = ValueOutput("instance", ReturnInstance);
-
-        Requirement(valueIn, valueOut);
     }
 
     public ControlOutput Enter(Flow flow)
