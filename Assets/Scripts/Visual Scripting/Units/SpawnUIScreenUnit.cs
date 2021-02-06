@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class SpawnUIScreenUnit : Unit
 {    
@@ -16,6 +17,9 @@ public class SpawnUIScreenUnit : Unit
 
     private Object spawnedPrefab;
     private IUIComponent[] components;
+    private Camera uiCamera;
+
+    private UniversalAdditionalCameraData cameraData;
 
     protected override void Definition()
     {
@@ -33,6 +37,11 @@ public class SpawnUIScreenUnit : Unit
         spawnedPrefab = Object.Instantiate(prefab);
         Object.DontDestroyOnLoad(spawnedPrefab);
 
+        uiCamera = spawnedPrefab.GetComponentInChildren<Camera>();
+
+        cameraData = Camera.main.GetUniversalAdditionalCameraData();
+        cameraData.cameraStack.Add(uiCamera);
+
         components = spawnedPrefab.GetComponentsInChildren<IUIComponent>();
         EnterComponents(flow, components);
 
@@ -42,6 +51,8 @@ public class SpawnUIScreenUnit : Unit
     private ControlOutput Destroy(Flow flow)
     {
         ExitComponents(flow, components);
+
+        cameraData.cameraStack.Remove(uiCamera);
 
         if (spawnedPrefab)
         {

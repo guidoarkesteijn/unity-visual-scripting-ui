@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "Unity.VisualScripting.Core",
-        "Unity.VisualScripting.Flow"
+        "Unity.VisualScripting.Flow",
+        "Unity.RenderPipelines.Universal.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

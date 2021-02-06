@@ -9,6 +9,11 @@ showPackageIndexes = false
 showStatusBar = false
 debounceMs = 250
 scopes = {
+	"last_search.83F126EB" = "Camera"
+	"m_ShownPanels.83F126EB" = "3"
+	"m_SideBarSplitter.83F126EB" = "180"
+	"m_DetailsPanelSplitter.83F126EB" = "700"
+	"currentGroup.83F126EB" = "all"
 }
 providers = {
 	asset = {
@@ -53,5 +58,7 @@ providers = {
 	}
 }
 recentSearches = [
+	"Camera"
+	"CameraData"
 ]
 savedSearchesSortOrder = 0
